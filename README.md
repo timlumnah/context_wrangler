@@ -336,4 +336,6 @@ What the OCR bill looks like, line by line:
 
 ## License
 
-AGPL-3.0 (planned). Free to use, modify, and self-host. Anyone who runs a modified version as a service publishes their changes.
+AGPL-3.0. The full text is in [LICENSE](LICENSE). Copyright 2026 Tim
+Lumnah. Free to use, modify, and self-host. Anyone who runs a modified
+version as a service publishes their changes.
