@@ -1,0 +1,2504 @@
+{
+  "run_utc": "2026-11-21T22:42:47+00:00",
+  "key": "corpus_out/answer_key.json",
+  "limit": 16,
+  "seed": 42,
+  "runs": 3,
+  "mode": "hybrid",
+  "rerank": null,
+  "rows": [
+    {
+      "tier": "local",
+      "index": "cw_corpus_index",
+      "embedder": "ollama:nomic-embed-text",
+      "chat": "ollama:qwen2.5:7b",
+      "sampled": 17,
+      "runs": 3,
+      "seed": 42,
+      "correct_majority": 13,
+      "n_unstable": 0,
+      "dollars_per_1k_queries": 0.0,
+      "ingest_cost_usd": 0.0,
+      "query_embed_cost_usd": 0.0,
+      "median_gen_ms": 2653.2,
+      "report": {
+        "run_utc": "2026-11-21T22:40:00+00:00",
+        "model": "ollama:qwen2.5:7b",
+        "publishable": true,
+        "index": "cw_corpus_index",
+        "k": 10,
+        "budget": 2400,
+        "mode": "hybrid",
+        "seed": 42,
+        "runs": 3,
+        "rerank": null,
+        "sampled": 17,
+        "cost": {
+          "cost_usd_total": 0.0,
+          "metered_all_rows": true,
+          "calls": 33,
+          "prompt_tokens": 22035,
+          "completion_tokens": 1644
+        },
+        "aggregate": {
+          "exact": {
+            "n": 4,
+            "correct": 2,
+            "rejected": 0,
+            "refused": 1,
+            "unstable": 0
+          },
+          "table": {
+            "n": 3,
+            "correct": 3,
+            "rejected": 0,
+            "refused": 0,
+            "unstable": 0
+          },
+          "trap": {
+            "n": 4,
+            "correct": 4,
+            "rejected": 0,
+            "refused": 0,
+            "unstable": 0,
+            "stale_cited": 0
+          },
+          "join": {
+            "n": 2,
+            "correct": 0,
+            "rejected": 0,
+            "refused": 2,
+            "unstable": 0
+          },
+          "refusal": {
+            "n": 4,
+            "correct": 4,
+            "rejected": 0,
+            "refused": 4,
+            "unstable": 0
+          }
+        },
+        "rows": [
+          {
+            "id": "q0000",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 5483.5,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 616,
+              "completion_tokens": 66,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1848,
+              "completion_tokens": 198,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0048",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2856.3,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 595,
+              "completion_tokens": 63,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1785,
+              "completion_tokens": 189,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0098",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2944.9,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 510,
+              "completion_tokens": 62,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1530,
+              "completion_tokens": 186,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0148",
+            "kind": "exact",
+            "run": 1,
+            "status": "refused",
+            "gate": "model",
+            "attempts": 1,
+            "gen_ms": 1283.6,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 589,
+              "completion_tokens": 22,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1767,
+              "completion_tokens": 66,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0005",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2063.1,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 867,
+              "completion_tokens": 39,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2601,
+              "completion_tokens": 117,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0068",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1838.4,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 613,
+              "completion_tokens": 39,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1839,
+              "completion_tokens": 117,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0132",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2212.7,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 848,
+              "completion_tokens": 39,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2544,
+              "completion_tokens": 117,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0046",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2673.5,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 641,
+              "completion_tokens": 56,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1923,
+              "completion_tokens": 168,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0070",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2698.9,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 685,
+              "completion_tokens": 54,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2055,
+              "completion_tokens": 162,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0110",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2653.2,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 705,
+              "completion_tokens": 54,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2115,
+              "completion_tokens": 162,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0134",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2562.2,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 676,
+              "completion_tokens": 54,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2028,
+              "completion_tokens": 162,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0007",
+            "kind": "join",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0103",
+            "kind": "join",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0200",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0203",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0206",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0209",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "tier": "api-embed + local chat",
+      "index": "cw_corpus_index_api",
+      "embedder": "openrouter:openai/text-embedding-3-small",
+      "chat": "ollama:qwen2.5:7b",
+      "sampled": 17,
+      "runs": 3,
+      "seed": 42,
+      "correct_majority": 14,
+      "n_unstable": 0,
+      "dollars_per_1k_queries": 0.0005435294117647057,
+      "ingest_cost_usd": 0.0006906000000000001,
+      "query_embed_cost_usd": 9.239999999999998e-06,
+      "median_gen_ms": 2810.5,
+      "report": {
+        "run_utc": "2026-11-21T22:41:46+00:00",
+        "model": "ollama:qwen2.5:7b",
+        "publishable": true,
+        "index": "cw_corpus_index_api",
+        "k": 10,
+        "budget": 2400,
+        "mode": "hybrid",
+        "seed": 42,
+        "runs": 3,
+        "rerank": null,
+        "sampled": 17,
+        "cost": {
+          "cost_usd_total": 0.0,
+          "metered_all_rows": true,
+          "calls": 36,
+          "prompt_tokens": 23400,
+          "completion_tokens": 1836
+        },
+        "aggregate": {
+          "exact": {
+            "n": 4,
+            "correct": 3,
+            "rejected": 0,
+            "refused": 1,
+            "unstable": 0
+          },
+          "table": {
+            "n": 3,
+            "correct": 3,
+            "rejected": 0,
+            "refused": 0,
+            "unstable": 0
+          },
+          "trap": {
+            "n": 4,
+            "correct": 4,
+            "rejected": 0,
+            "refused": 0,
+            "unstable": 0,
+            "stale_cited": 0
+          },
+          "join": {
+            "n": 2,
+            "correct": 0,
+            "rejected": 0,
+            "refused": 2,
+            "unstable": 0
+          },
+          "refusal": {
+            "n": 4,
+            "correct": 4,
+            "rejected": 0,
+            "refused": 4,
+            "unstable": 0
+          }
+        },
+        "rows": [
+          {
+            "id": "q0000",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 3097.3,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 550,
+              "completion_tokens": 66,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1650,
+              "completion_tokens": 198,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0048",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 3093.3,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 543,
+              "completion_tokens": 63,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1629,
+              "completion_tokens": 189,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0098",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 3116.1,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 591,
+              "completion_tokens": 62,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1773,
+              "completion_tokens": 186,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0148",
+            "kind": "exact",
+            "run": 1,
+            "status": "refused",
+            "gate": "model",
+            "attempts": 2,
+            "gen_ms": 4340.8,
+            "usage": {
+              "calls": 2,
+              "prompt_tokens": 1617,
+              "completion_tokens": 86,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 6,
+              "prompt_tokens": 4851,
+              "completion_tokens": 258,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0005",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2155.6,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 654,
+              "completion_tokens": 39,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1962,
+              "completion_tokens": 117,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0068",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2036.9,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 520,
+              "completion_tokens": 39,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1560,
+              "completion_tokens": 117,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0132",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2161.1,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 556,
+              "completion_tokens": 39,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1668,
+              "completion_tokens": 117,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0046",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 3110.2,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 854,
+              "completion_tokens": 56,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2562,
+              "completion_tokens": 168,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0070",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2614.9,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 559,
+              "completion_tokens": 54,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1677,
+              "completion_tokens": 162,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0110",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2810.5,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 716,
+              "completion_tokens": 54,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2148,
+              "completion_tokens": 162,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0134",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 2708.9,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 640,
+              "completion_tokens": 54,
+              "cost_usd": 0.0
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1920,
+              "completion_tokens": 162,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0007",
+            "kind": "join",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0103",
+            "kind": "join",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0200",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0203",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0206",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0209",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "tier": "full API (cheap)",
+      "index": "cw_corpus_index_api",
+      "embedder": "openrouter:openai/text-embedding-3-small",
+      "chat": "openrouter:openai/gpt-4o-mini",
+      "sampled": 17,
+      "runs": 3,
+      "seed": 42,
+      "correct_majority": 15,
+      "n_unstable": 0,
+      "dollars_per_1k_queries": 0.22323176470588235,
+      "ingest_cost_usd": 0.0006906000000000001,
+      "query_embed_cost_usd": 9.240000000000022e-06,
+      "median_gen_ms": 1333.8,
+      "report": {
+        "run_utc": "2026-11-21T22:42:47+00:00",
+        "model": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "index": "cw_corpus_index_api",
+        "k": 10,
+        "budget": 2400,
+        "mode": "hybrid",
+        "seed": 42,
+        "runs": 3,
+        "rerank": null,
+        "sampled": 17,
+        "cost": {
+          "cost_usd_total": 0.0037857,
+          "metered_all_rows": true,
+          "calls": 33,
+          "prompt_tokens": 18810,
+          "completion_tokens": 1607
+        },
+        "aggregate": {
+          "exact": {
+            "n": 4,
+            "correct": 4,
+            "rejected": 0,
+            "refused": 0,
+            "unstable": 0
+          },
+          "table": {
+            "n": 3,
+            "correct": 3,
+            "rejected": 0,
+            "refused": 0,
+            "unstable": 0
+          },
+          "trap": {
+            "n": 4,
+            "correct": 4,
+            "rejected": 0,
+            "refused": 0,
+            "unstable": 0,
+            "stale_cited": 1
+          },
+          "join": {
+            "n": 2,
+            "correct": 0,
+            "rejected": 0,
+            "refused": 2,
+            "unstable": 0
+          },
+          "refusal": {
+            "n": 4,
+            "correct": 4,
+            "rejected": 0,
+            "refused": 4,
+            "unstable": 0
+          }
+        },
+        "rows": [
+          {
+            "id": "q0000",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1544.8,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 495,
+              "completion_tokens": 73,
+              "cost_usd": 0.00011805
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1485,
+              "completion_tokens": 219,
+              "cost_usd": 0.00035415,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0048",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1434.9,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 494,
+              "completion_tokens": 50,
+              "cost_usd": 0.0001041
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1482,
+              "completion_tokens": 150,
+              "cost_usd": 0.0003123,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0098",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1202.6,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 530,
+              "completion_tokens": 47,
+              "cost_usd": 0.0001077
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1590,
+              "completion_tokens": 141,
+              "cost_usd": 0.0003231,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0148",
+            "kind": "exact",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1535.7,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 692,
+              "completion_tokens": 47,
+              "cost_usd": 0.000132
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2076,
+              "completion_tokens": 141,
+              "cost_usd": 0.00039600000000000003,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0005",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1125.9,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 578,
+              "completion_tokens": 34,
+              "cost_usd": 0.0001071
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1734,
+              "completion_tokens": 102,
+              "cost_usd": 0.0003213,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0068",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1204.5,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 468,
+              "completion_tokens": 34,
+              "cost_usd": 9.06e-05
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1404,
+              "completion_tokens": 92,
+              "cost_usd": 0.0002658,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0132",
+            "kind": "table",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1007.8,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 501,
+              "completion_tokens": 29,
+              "cost_usd": 9.255e-05
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1503,
+              "completion_tokens": 87,
+              "cost_usd": 0.00027765,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0046",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1256.8,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 762,
+              "completion_tokens": 43,
+              "cost_usd": 0.0001401
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 2286,
+              "completion_tokens": 129,
+              "cost_usd": 0.00042029999999999997,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0070",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1731.4,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 519,
+              "completion_tokens": 49,
+              "cost_usd": 0.00010725
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1557,
+              "completion_tokens": 147,
+              "cost_usd": 0.00032175,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0110",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1333.8,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 649,
+              "completion_tokens": 55,
+              "cost_usd": 0.00013035
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": false,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1947,
+              "completion_tokens": 167,
+              "cost_usd": 0.00039225,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0134",
+            "kind": "trap",
+            "run": 1,
+            "status": "ok",
+            "gate": null,
+            "attempts": 1,
+            "gen_ms": 1918.6,
+            "usage": {
+              "calls": 1,
+              "prompt_tokens": 582,
+              "completion_tokens": 87,
+              "cost_usd": 0.0001395
+            },
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "stale_cited": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "ok",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "ok",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 3,
+              "prompt_tokens": 1746,
+              "completion_tokens": 232,
+              "cost_usd": 0.00040110000000000005,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0007",
+            "kind": "join",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0103",
+            "kind": "join",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": false,
+            "runs": 3,
+            "correct_runs": "0/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": false
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": false
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0200",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0203",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0206",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          },
+          {
+            "id": "q0209",
+            "kind": "refusal",
+            "run": 1,
+            "status": "refused",
+            "gate": "no_keyword_support",
+            "attempts": null,
+            "gen_ms": 0.0,
+            "usage": null,
+            "rerank": {
+              "enabled": false
+            },
+            "correct": true,
+            "runs": 3,
+            "correct_runs": "3/3",
+            "unstable": false,
+            "per_run": [
+              {
+                "run": 1,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 2,
+                "status": "refused",
+                "correct": true
+              },
+              {
+                "run": 3,
+                "status": "refused",
+                "correct": true
+              }
+            ],
+            "cost": {
+              "calls": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0,
+              "cost_usd": 0.0,
+              "metered": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

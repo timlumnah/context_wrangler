@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/magnolia_gold/dev/claude_5-5-26/context_wrangler/evals/__main__.py", line 130, in <module>
+    print(f"table -> {args.md_out}", file=sys.stderr)
+                 ^^^^^^
+  File "/home/magnolia_gold/dev/claude_5-5-26/context_wrangler/evals/__main__.py", line 66, in main
+    if args.frontier:
+                    ^
+    ...<2 lines>...
+        try:
+        ^^^^
+  File "/home/magnolia_gold/dev/claude_5-5-26/context_wrangler/evals/frontier.py", line 137, in run_frontier
+    out_rows = []
+    
+NameError: name '_query_embed_delta' is not defined

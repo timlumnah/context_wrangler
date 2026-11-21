@@ -1,0 +1,111 @@
+name: evals
+
+# Two jobs, split by what a CI runner can actually afford.
+#
+#   suite: fully offline (pytest + evals selftest + corpus verify + the
+#          bm25 retrieval row). No key, no model, no excuse to skip.
+#          v0.5: apt-installs poppler-utils + tesseract-ocr so the real
+#          OCR roundtrip tests run here instead of skipping silently.
+#   frontier-api: regenerates the AUTO:FRONTIER_API block in README.md
+#          (full-API tier, metered dollars) and commits it when stale.
+#          Needs OPENROUTER_API_KEY; silently skipped without it.
+#
+# The LOCAL tiers (ollama 7B answering) are NOT in this file on purpose:
+# a 4.7 GB model pulling on a shared runner, 48 CPU generations per run,
+# is a bad citizen. Those rows regenerate on the dev machine with
+# scripts/regen_tables.sh, and the README block says exactly that.
+#
+# Status: written 2026-11-21, updated for v0.5 the same day, never
+# executed (repo not pushed yet). The README keeps this honest until a
+# green run exists.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"          # Mondays, 06:17 UTC
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "context_wrangler/**"
+      - "evals/**"
+      - "tests/**"
+      - ".github/workflows/evals.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils tesseract-ocr
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install -e .
+      - name: test suite (offline, key-free)
+        run: python -m pytest -q
+      - name: eval metrics selftest
+        run: python -m evals --selftest
+      - name: corpus + index round trip
+        run: |
+          cw generate-corpus corpus_ci --deals 25 --seed 42
+          cw ingest corpus_ci/pdfs --index cw_index_ci --tables
+          cw verify --index cw_index_ci
+          python -m evals --index cw_index_ci --key corpus_ci/answer_key.json \
+            --modes bm25 --json evals/results/ci_bm25.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ci-bm25-rows
+          path: evals/results/ci_bm25.json
+
+  frontier-api:
+    needs: suite
+    runs-on: ubuntu-latest
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    if: ${{ env.OPENROUTER_API_KEY != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install -e .
+      - name: corpus + API-embedded index
+        run: |
+          cw generate-corpus corpus_ci --deals 25 --seed 42
+          cw ingest corpus_ci/pdfs --index cw_index_ci_api \
+            --embed openrouter:openai/text-embedding-3-small --tables
+      - name: frontier, api tiers only
+        run: |
+          python -m evals --frontier --tiers api-cheap \
+            --key corpus_ci/answer_key.json \
+            --tier-index api-cheap=cw_index_ci_api \
+            --limit 16 --runs 3 --seed 42 --k 10 \
+            --json evals/results/frontier_api.json \
+            --md evals/results/frontier_api.md
+      - name: sync README block
+        run: |
+          python -m evals.readme_sync --write \
+            FRONTIER_API=evals/results/frontier_api.md
+      - name: commit if the table moved
+        run: |
+          git config user.name "evals-ci"
+          git config user.email "evals-ci@users.noreply.github.com"
+          git add README.md evals/results/frontier_api.*
+          if git diff --cached --quiet; then
+            echo "README already fresh"
+          else
+            git commit -m "evals: regenerate API frontier table [skip ci]"
+            git push
+          fi

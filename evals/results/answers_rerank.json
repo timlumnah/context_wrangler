@@ -1,0 +1,1054 @@
+{
+  "run_utc": "2026-11-21T22:45:52+00:00",
+  "model": "openrouter:openai/gpt-4o-mini",
+  "publishable": true,
+  "index": "cw_corpus_index_api",
+  "k": 10,
+  "budget": 2400,
+  "mode": "auto",
+  "seed": 42,
+  "runs": 3,
+  "rerank": "openrouter:openai/gpt-4o-mini",
+  "sampled": 17,
+  "cost": {
+    "cost_usd_total": 0.010030950000000002,
+    "metered_all_rows": true,
+    "calls": 84,
+    "prompt_tokens": 53917,
+    "completion_tokens": 3239
+  },
+  "aggregate": {
+    "exact": {
+      "n": 4,
+      "correct": 4,
+      "rejected": 0,
+      "refused": 0,
+      "unstable": 0
+    },
+    "table": {
+      "n": 3,
+      "correct": 3,
+      "rejected": 0,
+      "refused": 0,
+      "unstable": 0
+    },
+    "trap": {
+      "n": 4,
+      "correct": 4,
+      "rejected": 0,
+      "refused": 0,
+      "unstable": 0,
+      "stale_cited": 1
+    },
+    "join": {
+      "n": 2,
+      "correct": 0,
+      "rejected": 0,
+      "refused": 2,
+      "unstable": 0
+    },
+    "refusal": {
+      "n": 4,
+      "correct": 4,
+      "rejected": 0,
+      "refused": 4,
+      "unstable": 0
+    }
+  },
+  "rows": [
+    {
+      "id": "q0000",
+      "kind": "exact",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1487.8,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 424,
+        "completion_tokens": 73,
+        "cost_usd": 0.0001074
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 893.9,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 692,
+          "completion_tokens": 33,
+          "cost_usd": 0.0001236
+        },
+        "moved": 9
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3348,
+        "completion_tokens": 318,
+        "cost_usd": 0.000693,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0048",
+      "kind": "exact",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1295.8,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 416,
+        "completion_tokens": 50,
+        "cost_usd": 9.24e-05
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1249.7,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 677,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012135
+        },
+        "moved": 8
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3279,
+        "completion_tokens": 249,
+        "cost_usd": 0.00064125,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0098",
+      "kind": "exact",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1163.9,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 444,
+        "completion_tokens": 47,
+        "cost_usd": 9.48e-05
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 978.4,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 694,
+          "completion_tokens": 23,
+          "cost_usd": 0.00011789999999999999
+        },
+        "moved": 8
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3414,
+        "completion_tokens": 210,
+        "cost_usd": 0.0006381,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0148",
+      "kind": "exact",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1375.0,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 635,
+        "completion_tokens": 49,
+        "cost_usd": 0.00012465
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 971.1,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 726,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012870000000000004
+        },
+        "moved": 9
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 4083,
+        "completion_tokens": 244,
+        "cost_usd": 0.0007588500000000001,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0005",
+      "kind": "table",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1030.0,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 578,
+        "completion_tokens": 34,
+        "cost_usd": 0.0001071
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1007.6,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 705,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012554999999999988
+        },
+        "moved": 8
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3892,
+        "completion_tokens": 201,
+        "cost_usd": 0.0007043999999999996,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0068",
+      "kind": "table",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1142.9,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 537,
+        "completion_tokens": 34,
+        "cost_usd": 0.00010095
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1068.2,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 679,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012165000000000006
+        },
+        "moved": 4
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3651,
+        "completion_tokens": 191,
+        "cost_usd": 0.0006622500000000002,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0132",
+      "kind": "table",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1067.4,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 501,
+        "completion_tokens": 29,
+        "cost_usd": 9.255e-05
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1054.0,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 695,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012405000000000012
+        },
+        "moved": 0
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3588,
+        "completion_tokens": 186,
+        "cost_usd": 0.0006498000000000003,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0046",
+      "kind": "trap",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1134.4,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 741,
+        "completion_tokens": 43,
+        "cost_usd": 0.00013695
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 920.6,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 750,
+          "completion_tokens": 23,
+          "cost_usd": 0.0001263000000000002
+        },
+        "moved": 6
+      },
+      "correct": true,
+      "stale_cited": false,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 4473,
+        "completion_tokens": 218,
+        "cost_usd": 0.0008017500000000004,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0070",
+      "kind": "trap",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1398.9,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 470,
+        "completion_tokens": 55,
+        "cost_usd": 0.0001035
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 910.3,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 664,
+          "completion_tokens": 33,
+          "cost_usd": 0.00011939999999999997
+        },
+        "moved": 8
+      },
+      "correct": true,
+      "stale_cited": false,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3402,
+        "completion_tokens": 264,
+        "cost_usd": 0.0006686999999999999,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0110",
+      "kind": "trap",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1352.9,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 649,
+        "completion_tokens": 55,
+        "cost_usd": 0.00013035
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1033.4,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 712,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012660000000000015
+        },
+        "moved": 8
+      },
+      "correct": true,
+      "stale_cited": false,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 4083,
+        "completion_tokens": 264,
+        "cost_usd": 0.0007708500000000004,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0134",
+      "kind": "trap",
+      "run": 1,
+      "status": "ok",
+      "gate": null,
+      "attempts": 1,
+      "gen_ms": 1860.6,
+      "usage": {
+        "calls": 1,
+        "prompt_tokens": 626,
+        "completion_tokens": 87,
+        "cost_usd": 0.0001461
+      },
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1059.1,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 704,
+          "completion_tokens": 23,
+          "cost_usd": 0.00011939999999999997
+        },
+        "moved": 5
+      },
+      "correct": true,
+      "stale_cited": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "ok",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "ok",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 6,
+        "prompt_tokens": 3990,
+        "completion_tokens": 330,
+        "cost_usd": 0.0007965000000000009,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0007",
+      "kind": "join",
+      "run": 1,
+      "status": "refused",
+      "gate": "no_keyword_support",
+      "attempts": null,
+      "gen_ms": 0.0,
+      "usage": null,
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 907.5,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 706,
+          "completion_tokens": 33,
+          "cost_usd": 0.0001257000000000003
+        },
+        "moved": 8
+      },
+      "correct": false,
+      "runs": 3,
+      "correct_runs": "0/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "refused",
+          "correct": false
+        },
+        {
+          "run": 2,
+          "status": "refused",
+          "correct": false
+        },
+        {
+          "run": 3,
+          "status": "refused",
+          "correct": false
+        }
+      ],
+      "cost": {
+        "calls": 3,
+        "prompt_tokens": 2118,
+        "completion_tokens": 99,
+        "cost_usd": 0.00037710000000000087,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0103",
+      "kind": "join",
+      "run": 1,
+      "status": "refused",
+      "gate": "no_keyword_support",
+      "attempts": null,
+      "gen_ms": 0.0,
+      "usage": null,
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 842.3,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 734,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012989999999999963
+        },
+        "moved": 10
+      },
+      "correct": false,
+      "runs": 3,
+      "correct_runs": "0/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "refused",
+          "correct": false
+        },
+        {
+          "run": 2,
+          "status": "refused",
+          "correct": false
+        },
+        {
+          "run": 3,
+          "status": "refused",
+          "correct": false
+        }
+      ],
+      "cost": {
+        "calls": 3,
+        "prompt_tokens": 2202,
+        "completion_tokens": 99,
+        "cost_usd": 0.0003896999999999989,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0200",
+      "kind": "refusal",
+      "run": 1,
+      "status": "refused",
+      "gate": "no_keyword_support",
+      "attempts": null,
+      "gen_ms": 0.0,
+      "usage": null,
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 958.4,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 708,
+          "completion_tokens": 23,
+          "cost_usd": 0.00012000000000000031
+        },
+        "moved": 8
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "refused",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 3,
+        "prompt_tokens": 2124,
+        "completion_tokens": 89,
+        "cost_usd": 0.0003720000000000008,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0203",
+      "kind": "refusal",
+      "run": 1,
+      "status": "refused",
+      "gate": "no_keyword_support",
+      "attempts": null,
+      "gen_ms": 0.0,
+      "usage": null,
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 966.2,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 687,
+          "completion_tokens": 23,
+          "cost_usd": 0.00011684999999999994
+        },
+        "moved": 9
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "refused",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 3,
+        "prompt_tokens": 2061,
+        "completion_tokens": 79,
+        "cost_usd": 0.00035654999999999975,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0206",
+      "kind": "refusal",
+      "run": 1,
+      "status": "refused",
+      "gate": "no_keyword_support",
+      "attempts": null,
+      "gen_ms": 0.0,
+      "usage": null,
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1072.5,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 692,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012359999999999975
+        },
+        "moved": 9
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "refused",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 3,
+        "prompt_tokens": 2076,
+        "completion_tokens": 99,
+        "cost_usd": 0.00037079999999999926,
+        "metered": true
+      }
+    },
+    {
+      "id": "q0209",
+      "kind": "refusal",
+      "run": 1,
+      "status": "refused",
+      "gate": "no_keyword_support",
+      "attempts": null,
+      "gen_ms": 0.0,
+      "usage": null,
+      "rerank": {
+        "enabled": true,
+        "name": "openrouter:openai/gpt-4o-mini",
+        "publishable": true,
+        "window": 10,
+        "attempts": 1,
+        "ok": true,
+        "reasons": [],
+        "ms": 1325.7,
+        "usage": {
+          "calls": 1,
+          "prompt_tokens": 711,
+          "completion_tokens": 33,
+          "cost_usd": 0.00012645000000000017
+        },
+        "moved": 8
+      },
+      "correct": true,
+      "runs": 3,
+      "correct_runs": "3/3",
+      "unstable": false,
+      "per_run": [
+        {
+          "run": 1,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 2,
+          "status": "refused",
+          "correct": true
+        },
+        {
+          "run": 3,
+          "status": "refused",
+          "correct": true
+        }
+      ],
+      "cost": {
+        "calls": 3,
+        "prompt_tokens": 2133,
+        "completion_tokens": 99,
+        "cost_usd": 0.0003793500000000005,
+        "metered": true
+      }
+    }
+  ]
+}

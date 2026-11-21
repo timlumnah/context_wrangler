@@ -1,0 +1,6 @@
+# dev env: python -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+# search layer runtime deps: stdlib only. pypdf is the ingest dep. sqlite-vec
+# powers the v0.2 vec table (BM25-only indexes still work without it).
+pypdf==7.1.1
+pytest==9.2.0
+sqlite-vec==0.1.9
