@@ -1,95 +1,44 @@
 # context_wrangler
 
+[![evals](https://github.com/timlumnah/context_wrangler/actions/workflows/evals.yml/badge.svg)](https://github.com/timlumnah/context_wrangler/actions/workflows/evals.yml)
+
 Document intelligence you can run on a laptop. Point it at a folder of messy PDFs. Get answers that cite the exact span in the source document, plus a test suite proving the citations are not invented.
 
-Status: v0.1 through v0.5 are built; the roadmap shipped. No CI workflow has executed yet, and nothing is pushed. v0.1: ingest, structure-aware chunking, FTS5 BM25, search CLI with cited spans. v0.2: sqlite-vec embeddings, hybrid fusion with RRF, the seeded corpus generator with machine-checkable answer keys, and the eval harness that published the baseline tables below. v0.3: the token-budget context assembler, the grounded answering CLI, and the refusal gate enforced in code. v0.4: OpenRouter providers with exact per-call cost metering, the cost/quality frontier table across three model tiers, fixed-seed multi-run answer evals that publish measured instability, the rerank stage behind a flag with its latency and cost documented, and README tables that regenerate between marker pairs instead of rotting. v0.5: the two extraction regimes. Optional OCR (system pdftoppm + tesseract, per page, and only where a page's text layer is thin) and coordinate-aware table reflow, each stamped into index meta so one index can never mix extraction regimes. The corpus grew a settlement table drawn the way real table writers draw, column-major, which breaks label-value pairing in naive extraction and is what --tables repairs; table questions grade on the reflowed row string, at chunk level, where document-level recall cannot hide the damage. And the whole corpus now has a scanned image-only twin that scores against its text original, so the price of OCR is a published number instead of a vibe. The proof: 164 tests pass on Python 3.14.9 (2026-11-21), `cw verify` byte-checks every indexed span including the OCR'd ones, `python -m evals --selftest` proves the metric functions, the API tiers are verified live against a metered OpenRouter account, and every published table below was produced by a command printed next to it.
+![context_wrangler demo](docs/demo.gif)
+
+The recording is a real run with a local model and no key: generate a synthetic corpus, ingest it with table reflow, get a cited answer, get a table row, get a refusal for a deal that does not exist, and re-check every span against the source bytes. Re-record with `docs/record_demo.sh`.
+
+## Headline results
+
+All on a synthetic, seeded corpus with machine-checkable answer keys (25 deals, 58 PDFs, 212 questions). Every table below is produced by a command printed next to it, and the AUTO blocks regenerate instead of rotting.
+
+- **Hybrid retrieval earns its keep.** Exact-figure recall@10 is 1.000 for BM25 and hybrid, but vector-only drops exact MRR to 0.733. Contracts are full of exact tokens.
+- **One flag fixed a real extraction bug.** Table reflow (`--tables`) moved table-row retrieval from 0.000 to 1.000 and changed no other metric. Document-level recall had been blind to the damage.
+- **Answers are grounded or refused.** The gate rejected 0 of 51 seeded runs, unknown deals are refused before any model call, and `cw verify` byte-checks all 274 cited spans.
+- **The cost curve is cents.** Local `qwen2.5:7b` scores 13/17 at $0; `gpt-4o-mini` scores 15/17 at $0.2232 per 1k queries, with dollars metered from provider usage reports, not modeled.
+- **Gaps are published.** Cross-document joins are refused at every price (0/2), the rerank stage bought nothing on the headline, and OCR loses table rows (row@10 0.000 on scanned input).
+
+Status: v0.1 through v0.5 are built. 164 tests pass on Python 3.14.9 (re-run 2026-11-22) and `python -m evals --selftest` passes 14/14. Version history and per-version tours: [docs/HISTORY.md](docs/HISTORY.md), [docs/TOURS.md](docs/TOURS.md). Design decisions: [docs/DESIGN.md](docs/DESIGN.md).
 
 ## Try it
+
+Offline and keyless (the `stub:extract` model proves the loop; swap in `--model ollama:qwen2.5:7b` for a real one):
 
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements-dev.txt
 .venv/bin/pip install -e .
 
-# demo corpus: the test fixture writer emits three synthetic transaction PDFs
-.venv/bin/python -c "import sys; sys.path.insert(0, 'tests'); from fixtures_pdf import write_corpus; write_corpus('demo_pdfs')"
-
-.venv/bin/cw ingest demo_pdfs --index cw_index
-.venv/bin/cw search 'earnest money deposit' --index cw_index
-.venv/bin/cw search '$12,500' --index cw_index --json
+.venv/bin/cw generate-corpus corpus_out --deals 25 --seed 42   # 58 synthetic PDFs + answer key
+.venv/bin/cw ingest corpus_out/pdfs --index cw_index --tables
+.venv/bin/cw search 'title insurance amount Whitfield 239 Granite' --index cw_index
+.venv/bin/cw answer 'earnest money deposit Whitfield 239 Granite' \
+    --index cw_index --model stub:extract --mode bm25
 .venv/bin/cw verify --index cw_index    # PASS, every span byte-checked
 .venv/bin/python -m pytest -q           # 164 tests
 ```
 
-v0.1 answers nothing. It cites. The grounded answerer and refusal gate arrived in v0.3; the tours below run in build order.
-
-The v0.2 tour, from the repo root (needs a running Ollama with `ollama pull nomic-embed-text` for the embed step):
-
-```bash
-.venv/bin/cw generate-corpus corpus_out --deals 25 --seed 42
-.venv/bin/cw ingest corpus_out/pdfs --index cw_corpus_index --embed ollama:nomic-embed-text --tables
-.venv/bin/python -m evals --index cw_corpus_index --key corpus_out/answer_key.json \
-    --modes bm25 vec hybrid
-.venv/bin/python -m evals --selftest    # no index, no model; proves the checks work
-```
-
-The v0.3 tour, answering through the gate. Needs the corpus and index from the v0.2 tour; a model is needed only for the last two lines, and `stub:extract` proves the loop offline:
-
-```bash
-.venv/bin/cw assemble 'earnest money deposit Whitfield 239 Granite' \
-    --index cw_corpus_index                      # the budget allocation, no model
-.venv/bin/cw answer 'earnest money deposit Whitfield 239 Granite' \
-    --index cw_corpus_index --model stub:extract # plumbing tier, offline
-.venv/bin/cw answer 'earnest money deposit Whitfield 239 Granite' \
-    --index cw_corpus_index --model ollama:qwen2.5:7b
-.venv/bin/python -m evals --answer --index cw_corpus_index \
-    --key corpus_out/answer_key.json --model ollama:qwen2.5:7b --limit 16
-```
-
-The v0.4 tour: the cost/quality frontier and the rerank flag. Needs the corpus from the v0.2 tour plus an API-embedded index; `OPENROUTER_API_KEY` in the environment pays for the API tiers (cents), ollama serves the local ones:
-
-```bash
-.venv/bin/cw ingest corpus_out/pdfs --index cw_corpus_index_api \
-    --embed openrouter:openai/text-embedding-3-small --tables  # prints metered ingest dollars
-.venv/bin/python -m evals --frontier --key corpus_out/answer_key.json \
-    --limit 16 --runs 3 --seed 42 --k 10 \
-    --json evals/results/frontier.json --md evals/results/frontier.md
-.venv/bin/cw answer 'earnest money deposit Whitfield 239 Granite' \
-    --index cw_corpus_index_api --model openrouter:openai/gpt-4o-mini \
-    --rerank openrouter:openai/gpt-4o-mini --seed 42  # metered line: $, tokens, ms
-.venv/bin/python -m evals.readme_sync --check \
-    FRONTIER=evals/results/frontier.md                 # the staleness gate CI runs
-```
-
-The v0.5 tour: the two extraction regimes. Needs the corpus from the v0.2 tour, `poppler-utils` + `tesseract-ocr` on PATH for the scanned leg, and fresh index dirs per regime (an index stamps its extraction regime at first ingest and refuses a later flip). Zero dollars; CPU minutes.
-
-```bash
-# the reflow regime: coordinate-aligned tables become pipe rows in canonical text
-.venv/bin/cw ingest corpus_out/pdfs --index cw_corpus_index \
-    --embed ollama:nomic-embed-text --tables
-.venv/bin/cw verify --index cw_corpus_index   # PASS, reflowed rows byte-checked
-.venv/bin/cw search 'title insurance amount Whitfield 239 Granite' \
-    --index cw_corpus_index                    # a "Title Insurance | $500" row answers
-
-# the v0.4-regime comparison index: same corpus bytes, no --tables
-.venv/bin/cw ingest corpus_out/pdfs --index cw_corpus_index_naive
-
-# the scanned twin: rasterize 58 text PDFs to image-only PDFs, ingest through OCR
-.venv/bin/cw scanify corpus_out/pdfs corpus_out/scanned_pdfs
-.venv/bin/cw ingest corpus_out/scanned_pdfs --index cw_corpus_index_scanned \
-    --ocr system --embed ollama:nomic-embed-text
-.venv/bin/cw verify --index cw_corpus_index_scanned  # PASS against the OCR'd canonicals
-
-# the published v0.5 comparisons (also what scripts/regen_tables.sh runs)
-.venv/bin/python -m evals --index cw_corpus_index --key corpus_out/answer_key.json \
-    --modes bm25 vec hybrid --json evals/results/latest.json --md evals/results/baseline.md
-.venv/bin/python -m evals --index cw_corpus_index_naive --key corpus_out/answer_key.json \
-    --modes bm25 --json evals/results/naive.json --md evals/results/naive.md
-.venv/bin/python -m evals --index cw_corpus_index_scanned --key corpus_out/answer_key.json \
-    --modes bm25 vec hybrid --scan-map \
-    --json evals/results/scanned.json --md evals/results/scanned.md
-.venv/bin/python scripts/gen_v05_blocks.py   # V05_TABLES + V05_OCR README blocks
-```
+Embeddings, the cost/quality frontier, rerank, and the OCR/scanned-twin comparison have their own tours in [docs/TOURS.md](docs/TOURS.md).
 
 ## Why this exists
 
@@ -201,7 +150,7 @@ What the frontier says, including the inconvenient parts:
 
 ### The API tiers, CI-regenerated
 
-`python -m evals --frontier --tiers api-cheap` is the slice of the frontier a GitHub runner can compute without pulling a 4.7 GB model: corpus embed, 51 answered questions, metered dollars. The workflow in `.github/workflows/evals.yml` runs it weekly, syncs the block below between AUTO markers, and commits when the table moves. Claim hygiene: the workflow is written and has NEVER EXECUTED (repo not pushed as of 2026-11-21). The rows below are NOT a separate keyed pass: `scripts/regen_tables.sh` derives this block from the same metered frontier run above (the run stamps match), because re-billing 51 answered questions to publish one row would make the dollar column a lie.
+`python -m evals --frontier --tiers api-cheap` is the slice of the frontier a GitHub runner can compute without pulling a 4.7 GB model: corpus embed, 51 answered questions, metered dollars. The workflow in `.github/workflows/evals.yml` runs it weekly, syncs the block below between AUTO markers, and commits when the table moves. The API job needs an `OPENROUTER_API_KEY` repository secret and is skipped without one. The rows below are NOT a separate keyed pass: `scripts/regen_tables.sh` derives this block from the same metered frontier run above (the run stamps match), because re-billing 51 answered questions to publish one row would make the dollar column a lie.
 
 <!-- BEGIN AUTO:FRONTIER_API -->
 Cost/quality frontier, run 2026-11-21T22:42:47+00:00. hybrid retrieval, seed 42, 3 runs per question, 17 stratified questions, rerank off.
@@ -293,22 +242,9 @@ What the OCR bill looks like, line by line:
 - **Trap top-1 loses one question to OCR.** Text hybrid gets every trap first (1.000); scanned hybrid gets 0.875. The misread header row ("tem Amount") is visible in at least one canonical, and one deal's ranking pays for it. Small pool, real effect, published.
 - **The cost is honest: $0.0000.** pdftoppm and tesseract are subprocesses on the laptop; the scanned index embedded with the same free ollama tier. The bill for reading paper is CPU minutes and the two small regressions above, and the gate holds: a scanned span is byte-true to the canonical the tier wrote, and the README says which truth that is.
 
-## Design decisions, documented
+## Design decisions
 
-- SQLite over a vector-database service: correct for 10^4 to 10^5 documents, which is the scale one person's paperwork lives at. The breakage point is written down, not pretended away.
-- Hybrid over vector-only: contracts are full of exact tokens (dates, section numbers, dollar figures). BM25 catches them for free.
-- RRF over score fusion: no normalizing incomparable scores across retrievers.
-- Refusal over fluency: "not in these documents" is a first-class answer.
-- Model quotes, server offsets: the model copies text, the code computes doc id and span. LLM character counting is unreliable, so it is not in the trusted path.
-- Keyword support anchors the refusal gate: if BM25 AND finds no chunk holding every query term, the question's identity is not in the corpus and KNN neighbors are the least-wrong documents, not evidence. The gate refuses before the model. The known cost is false refusals on cross-document and paraphrased questions; both are measured in the answer eval above.
-- Metered, not modeled: every published dollar comes from a provider usage report or the ingest meta, never from a price sheet multiplied in someone's head. A tier whose dollars cannot be metered shows a dash. A dash is a claim of ignorance, which is always better than a claim of arithmetic.
-- No-call rows are $0, unknown-call rows are not: a question refused by the keyword gate made no model call and is zero dollars as a fact. A request that died mid-flight may have been billed anyway, so it is unknown, and one unknown makes the tier's money column a dash.
-- Model orders, code permutes: the reranker returns an index list, the code validates, dedupes, and completes it. A malformed rerank reply after one retry leaves the retrieval order untouched rather than half-trusting a broken permutation.
-- Instability is published, not assumed: seeds are sent where the API accepts them, but the eval measures whether the model actually repeated itself (unstable column) instead of claiming determinism it cannot verify upstream.
-- Text layers always win: the OCR tier is consulted only on pages whose text layer is thinner than 24 chars. A real text layer is the PDF's own bytes; an OCR read of the same page is a second-hand copy, so the tool never trades up.
-- One extraction regime per index: `--ocr` and `--tables` settings are stamped in meta at first ingest and a disagreeing re-ingest raises. Canonical texts under two regimes in one index is two truths, and citations are only worth what their ground truth is worth.
-- Adjacency is a byte-level fact: the reflowed pipe row lives IN the canonical text, so label-and-figure pairing is quotable, byte-checked, and graded at chunk level. A metric that only looks at document ids cannot see a broken table, so the eval does not look at only that.
-- Report orphans, never delete: `generate-corpus` into a dirty directory lists the PDFs it cannot claim instead of removing them. Deleting files the tool did not write is not a library's business; letting them poison an index silently is.
+The full list is in [docs/DESIGN.md](docs/DESIGN.md). The short version: SQLite over a vector service (right for one person's paperwork), hybrid over vector-only (exact tokens), refusal over fluency, and the model quotes while the code computes spans.
 
 ## Stack
 
@@ -316,15 +252,17 @@ What the OCR bill looks like, line by line:
 - pypdf (ingest), SQLite FTS5 + sqlite-vec (index)
 - optional OCR: system pdftoppm (poppler-utils) + tesseract via subprocess, zero python deps; optional table reflow: pypdf layout mode
 - Bring-your-own model interface: OpenAI API, OpenRouter, or Ollama, shared pattern with open_otto; OpenRouter meters exact dollars per call
-- pytest, GitHub Actions (workflow written 2026-11-21, updated for v0.5 the same day, unexecuted until the repo is pushed; CI installs poppler-utils + tesseract-ocr so the OCR roundtrip tests run rather than skip)
+- pytest, GitHub Actions (`.github/workflows/evals.yml`; CI installs poppler-utils + tesseract-ocr so the OCR roundtrip tests run rather than skip)
 
 ## Roadmap
 
-- [x] v0.1: ingest, structure-aware chunking, FTS5 index, CLI search with cited spans (BM25 only). Built and tested 2026-11-20.
-- [x] v0.2: embeddings + hybrid fusion; synthetic corpus generator; eval harness with published baseline table. Built and tested 2026-11-20, table generated 2026-11-21.
-- [x] v0.3: token-budget context assembler + grounded answering CLI with refusal gate. Built and tested 2026-11-21, answer eval table generated same day.
-- [x] v0.4: cost/quality benchmark across model tiers, CI-regenerated README table, fixed-seed answer evals, the retrieve rerank flag with its latency and cost documented. Built and tested 2026-11-21; frontier tables generated the same day from a live metered OpenRouter account. The CI workflow file exists but has not executed (nothing pushed).
-- [x] v0.5: optional OCR and table extraction. Built and tested 2026-11-21: pdftoppm + tesseract tier with regime guards and per-page thresholds, coordinate-aware pipe-row reflow, column-major settlement tables planted in the corpus with a labeling gate that re-runs the real extraction, the image-only scanned twin of the whole corpus scored against its text original, and the two comparison blocks in the evals section generated by script. No v0.6 is planned; what is left is named in the tables: the join gate still refuses cross-document questions at every price, and the OCR cost is measured, not eliminated.
+All five versions shipped. Dates, measurements, and caveats per version are in [docs/HISTORY.md](docs/HISTORY.md#full-roadmap).
+
+- [x] v0.1: ingest, structure-aware chunking, FTS5 index, CLI search with cited spans
+- [x] v0.2: embeddings, hybrid fusion, synthetic corpus generator, eval harness with a published baseline
+- [x] v0.3: token-budget context assembler and grounded answering with the refusal gate
+- [x] v0.4: cost/quality frontier across model tiers, fixed-seed answer evals, rerank flag, README tables that regenerate
+- [x] v0.5: optional OCR and table reflow, with the scanned-twin comparison. No v0.6 is planned; what is left is named in the tables
 
 ## Non-goals
 

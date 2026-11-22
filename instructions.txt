@@ -114,3 +114,10 @@ VERIFICATION 2026-11-21 (v0.5)
 - live probes: cw answer q0000 via gpt-4o-mini+gpt-4o-mini-rerank: "$26,250", metered $0.000125/1620.3 ms; via ollama+seed 42: "$26,250", 3154 ms, $0.000000. cw verify across all four corpus indexes after everything.
 - dollar audit: key spend $0.0079 (v0.4 close) + ~$0.107 (test_phoenix session) = 0.11519 at this build's start; 0.13265 recorded at job B close => v0.5 build spent ~$0.0175 against the $5 cap. NOTE: /key now shows 0.16301, +0.0304 after job B with ZERO api calls from this session's tail (post-B work was re-render + checks only): attributed to Tim's concurrent test_phoenix agent on the same dedicated key, not claimed by this build, flagged here so the ledger stays honest.
 - still open: the join gate (0/2 refuses at every price, unchanged), OCR-time table reconstruction (needs tesseract TSV geometry or nothing; shipped as measured), rerank's case for existing on larger corpora, no git init yet, nothing pushed, no CI run yet.
+
+claude_changes_2026-11-22-1545
+- recruiter pass. README now: demo gif first, headline results, short try-it. old status, tours, design list, roadmap detail moved word for word into docs/HISTORY.md, docs/TOURS.md, docs/DESIGN.md. AUTO blocks stay in README (readme_sync, regen scripts, CI all point there).
+- stale lines fixed: "nothing pushed", "never executed", "unexecuted". HISTORY keeps old words with a note.
+- added docs/demo.cast, docs/demo.gif, docs/record_demo.sh. real run, local ollama qwen2.5:7b, bm25 only, throwaway dir, no key. no home paths in cast.
+- CI bug fixed in evals.yml: frontier-api job had job-level `if: env...`, env context not allowed there. now each step checks the key. UNVERIFIED on GitHub, from Actions context rules. check Actions tab after push.
+- verified 2026-11-22: pytest 164 passed (25s), evals --selftest 14/14, readme_sync --check OK, quick-start commands run verbatim in a temp dir (58 PDFs, 212 questions, PASS 274 spans).
