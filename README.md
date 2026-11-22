@@ -254,15 +254,15 @@ The full list is in [docs/DESIGN.md](docs/DESIGN.md). The short version: SQLite 
 - Bring-your-own model interface: OpenAI API, OpenRouter, or Ollama, shared pattern with open_otto; OpenRouter meters exact dollars per call
 - pytest, GitHub Actions (`.github/workflows/evals.yml`; CI installs poppler-utils + tesseract-ocr so the OCR roundtrip tests run rather than skip)
 
-## Roadmap
+## Status and known gaps
 
-All five versions shipped. Dates, measurements, and caveats per version are in [docs/HISTORY.md](docs/HISTORY.md#full-roadmap).
+v0.1 through v0.5 are built and tested; the version-by-version record is in [docs/HISTORY.md](docs/HISTORY.md). No further version is planned. What is still open, each measured above:
 
-- [x] v0.1: ingest, structure-aware chunking, FTS5 index, CLI search with cited spans
-- [x] v0.2: embeddings, hybrid fusion, synthetic corpus generator, eval harness with a published baseline
-- [x] v0.3: token-budget context assembler and grounded answering with the refusal gate
-- [x] v0.4: cost/quality frontier across model tiers, fixed-seed answer evals, rerank flag, README tables that regenerate
-- [x] v0.5: optional OCR and table reflow, with the scanned-twin comparison. No v0.6 is planned; what is left is named in the tables
+- **Cross-document joins are refused at every price.** The keyword gate refuses them before any model runs (0/2 in the seeded answer eval). Loosening it is the main open design problem.
+- **OCR loses table rows.** Facts survive scanning, but reflow needs a text layer, so `table row@10` is 0.000 on scanned input.
+- **The corpus is synthetic.** That is deliberate (no client data, checkable answer keys), but it means the numbers say how the pipeline behaves on planted facts, not on arbitrary real contracts.
+- **Answer-eval samples are small.** 17 stratified questions, 3 seeded runs each. The tables say so, and zero instability at seed 42 is a measurement, not a promise.
+- **Rerank stays off by default.** It cost 2.6x for no headline gain on this corpus; it may matter on much larger ones, which are unmeasured.
 
 ## Non-goals
 
